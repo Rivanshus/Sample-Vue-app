@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Task List</h2>
-        <Button label="Add Task" icon="pi pi-plus" @click="showDialog = true" class="custom-button" />
+        <Button label="Add Task" icon="pi pi-plus" @click="showDialog = true" class="custom-button-add" />
         
         <!-- Tasks table -->
          <DataTable :value="tasks" tableStyle="min-width: 50rem" showGridlines class="custom-table">
@@ -26,19 +26,22 @@
                 </Column>
         </DataTable>
 
-         <Dialog header="Task" v-model:visible="showDialog" modal >
+        <div class="p-dialog-header">
+        <Dialog header="Task" v-model:visible="showDialog" modal class="dialogBox">
             <div class="dialog-content">
                 <label>Title: </label>
                 <InputText v-model="task.title" required class="InputBox" />
                 <label>Description: </label>
                 <InputText v-model="task.description" class="InputBox" />
                 <label>Priority: </label>
-                <Dropdown v-model="task.priority" :options="priorities" />
+                <Dropdown v-model="task.priority" :options="priorities" class="dropdownContent" />
                 <label>Status: </label>
-                <Dropdown v-model="task.status" :options="statuses" />
-                <Button label="Save" @click="saveTask" class="custom-button" />
+                <Dropdown v-model="task.status" :options="statuses" class="dropdownContent" />
+                <Button label="Save" @click="saveTask" class="custom-button-add" />
             </div>
          </Dialog>
+        </div>
+         
     
     </div>
 </template>
@@ -115,7 +118,7 @@ const actionTemplate = (rowData, {rowIndex}) =>{
 
 </script>
 
-<style scoped>
+<style>
 
 .column-spacing{
   padding-left: 10px !important;
@@ -123,18 +126,18 @@ const actionTemplate = (rowData, {rowIndex}) =>{
 }
 
 .InputBox{
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  outline:none;
-  transition: border 0.3s, box-shadow 0.3s;
+  width: 100% !important;
+  padding: 8px 10px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  outline:none !important;
+  transition: border 0.3s, box-shadow 0.3s !important;
 }
 
 .InputBox:focus {
-  border-color: #007ad9;
-  box-shadow: 0 0 4px rgba(0, 122, 217, 0.5);
+  border-color: #007ad9 !important;
+  box-shadow: 0 0 4px rgba(0, 122, 217, 0.5) !important;
 }
 
 .editDeleteBtn{
@@ -142,28 +145,28 @@ const actionTemplate = (rowData, {rowIndex}) =>{
 }
 
 
-.custom-button {
-  width:fit-content;
-  margin: 10px 0px ;
-  padding: 6px 16px;
-  font-size: 14px;
-  background-color: #007ad9;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s;
-  text-align: center;
-  align-self: center;
+.custom-button-add {
+  width:fit-content !important;
+  margin: 10px 0px !important;
+  padding: 6px 16px !important;
+  font-size: 14px !important;
+  background-color: #007ad9 !important;
+  border: none !important;
+  border-radius: 4px !important;
+  color: white !important;
+  cursor: pointer !important;
+  transition: background 0.3s !important;
+  text-align: center !important;
+  align-self: center !important;
 }
 
-.custom-button:hover {
+.custom-button-add:hover {
   background-color: #005fa3 !important;
   color: white !important;
 }
 
-.custom-button:focus{
-    outline: none;
+.custom-button-add:focus{
+    outline: none !important;
 }
 
 .dialog-content {
@@ -175,4 +178,27 @@ const actionTemplate = (rowData, {rowIndex}) =>{
   background-color: rgb(65, 63, 63);
   color: white;
 }
+
+
+.dialogBox{
+    background-color: #b8bdbb !important;
+    padding: 10px 10px !important;
+}
+
+.dropdownContent{
+    background-color:white !important ;
+    color: black !important;
+    padding: 0px 10px !important; 
+}
+
+.dropdownContent options{
+    color: white !important;
+}
+
+.p-select-overlay{
+    background-color: #b8bdbb !important;
+    color: white !important ;
+    padding: 0px 10px !important ;
+}
+
 </style>
