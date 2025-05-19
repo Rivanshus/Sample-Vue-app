@@ -60,4 +60,8 @@ onMounted(async () => {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+.p-progressspinner-circle {
+  stroke: #007ad9 !important;  /* or any color you want */
+}
 </style>
